@@ -1,6 +1,6 @@
 id: io.github.martinrotter.rssguardlite
 runtime: org.kde.Platform
-runtime-version: '6.4'
+runtime-version: '5.15-22.08'
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node16
@@ -19,7 +19,7 @@ modules:
   - name: rssguard
     buildsystem: cmake-ninja
     config-opts:
-      - -DBUILD_WITH_QT6=ON
+      - -DBUILD_WITH_QT6=OFF
       - -DFORCE_BUNDLE_ICONS=ON
       - -DIS_FLATPAK_BUILD=ON
       - -DNO_UPDATE_CHECK=ON
