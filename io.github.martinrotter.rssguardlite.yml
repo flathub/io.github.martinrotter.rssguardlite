@@ -18,27 +18,6 @@ finish-args:
   - --talk-name=org.freedesktop.Notifications
 
 modules:
-  - name: rssguard
-    buildsystem: cmake-ninja
-    config-opts:
-      - -DBUILD_WITH_QT6=OFF
-      - -DFORCE_BUNDLE_ICONS=ON
-      - -DIS_FLATPAK_BUILD=ON
-      - -DNO_UPDATE_CHECK=ON
-      - -DUSE_WEBENGINE=OFF
-    sources:
-      - type: archive
-        dest-filename: rssguard.tar.gz
-        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.5.5
-        sha256: 8c887a068734ee3c191de93ea4c2dec3ed3ced4948ec6bbfe57ba42c3452cdf9
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
-          version-query: .tag_name
-          url-query: .tarball_url
-    cleanup:
-      - /include
-
   - name: nodejs-and-npm
     buildsystem: simple
     build-commands:
@@ -69,3 +48,27 @@ modules:
           url: https://api.github.com/repos/llvm/llvm-project/releases/latest
           version-query: .tag_name | sub("^llvmorg-"; "")
           url-query: .assets[] | select(.name == "llvm-project-" + $version + ".src.tar.xz").browser_download_url
+
+  - name: rssguard
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DBUILD_WITH_QT6=OFF
+      - -DENABLE_COMPRESSED_SITEMAP=ON
+      - -DENABLE_MEDIAPLAYER_LIBMPV=OFF
+      - -DENABLE_MEDIAPLAYER_QTMULTIMEDIA=ON
+      - -DFORCE_BUNDLE_ICONS=ON
+      - -DIS_FLATPAK_BUILD=ON
+      - -DNO_LITE=OFF
+      - -DNO_UPDATE_CHECK=ON
+    sources:
+      - type: archive
+        dest-filename: rssguard.tar.gz
+        url: https://api.github.com/repos/martinrotter/rssguard/tarball/4.6.1
+        sha256: 039f0a18339e739a3346e58088f156c677d816a20e66c96b9f00ef2ac3a06184
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/martinrotter/rssguard/releases/latest
+          version-query: .tag_name
+          url-query: .tarball_url
+    cleanup:
+      - /include
