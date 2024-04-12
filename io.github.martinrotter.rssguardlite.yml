@@ -1,6 +1,6 @@
 id: io.github.martinrotter.rssguardlite
 runtime: org.kde.Platform
-runtime-version: '6.7'
+runtime-version: '6.6'
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node18
