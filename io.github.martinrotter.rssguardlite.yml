@@ -71,5 +71,7 @@ modules:
           url-query: .tarball_url
       - type: patch
         path: patches/0001-fix-long-standing-bug-1654.patch
+      - type: patch
+        path: patches/0002-Set-a-fixed-release-date.patch
     cleanup:
       - /include
